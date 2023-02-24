@@ -23,9 +23,11 @@ jobs:
   build:
     # 该job运行的虚拟机环境
     runs-on: ubuntu-latest
-
+    # 该job的说明性文字
+    name: build task
+    
     # 该job所要执行的一系列步骤
-    steps:
+    steps:  
       # 下载仓库源代码
       - uses: actions/checkout@v3
 
