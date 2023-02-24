@@ -8,8 +8,9 @@ on:
   push:
     branches: [ "main" ]
     paths-ignore: # 下列文件的变更不触发部署，可以自行添加
-      README.md
-      LICENSE
+      - README.md
+      - LICENSE
+
   pull_request:
     branches: [ "main" ]
 
