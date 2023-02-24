@@ -1,0 +1,39 @@
+# name: workflow名称
+
+name: CI
+
+# on: 控制什么事件下触发这个workflow
+on:
+  # 当main分支下发生push 或者 pull request事件时触发
+  push:
+    branches: [ "main" ]
+    paths-ignore: # 下列文件的变更不触发部署，可以自行添加
+      README.md
+      LICENSE
+  pull_request:
+    branches: [ "main" ]
+
+  # 允许你手动触发该workflow
+  workflow_dispatch:
+
+# 一个workflow运行了一个或多个jobs，这些jobs可以线性或者并行运行
+jobs:
+  # 下面是一个简单的workflow，包括一个简单的job名为'build'
+  build:
+    # 该job运行的虚拟机环境
+    runs-on: ubuntu-latest
+
+    # 该job所要执行的一系列步骤
+    steps:
+      # 下载仓库源代码
+      - uses: actions/checkout@v3
+
+      # 执行一行命令
+      - name: Run a one-line script
+        run: echo Hello, world!
+
+      # 执行多行命令
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
